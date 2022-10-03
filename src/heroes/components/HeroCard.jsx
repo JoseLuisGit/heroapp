@@ -1,5 +1,9 @@
+import { Link } from "react-router-dom";
 
-
+const Characters = ({ alter_ego, characters }) =>{
+    if(alter_ego == characters) return (<></>);
+    return (<p>{ characters }</p>)
+}
 
 export const HeroCard = ({ 
     id,
@@ -24,13 +28,16 @@ export const HeroCard = ({
                         <p className="card-text">
                             { alter_ego }
                         </p>
-                        <p>
-                            {
-                                alter_ego != characters ?
-                                characters :
-                                ''
-                            }
+                        <Characters alter_ego={ alter_ego } characters={ characters } />
+
+                        <p className="card-text">
+                            <small className="text-muted"> { first_appearance } </small>
                         </p>
+
+                        <Link to={`/hero/${id}`}>
+                            Mas
+                        </Link>
+
                     </div>
                 </div>
             </div>
